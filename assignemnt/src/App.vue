@@ -1,8 +1,9 @@
 <script setup>
 import axios from 'axios'
-import { onBeforeMount,ref } from 'vue';
+import { onBeforeMount,ref,computed } from 'vue';
 
 let userInfo = ref([])
+let search = ref('')
 
 const getUser = async ()=>{
   await axios.get('http://52.77.211.222:3000/users')
@@ -18,6 +19,11 @@ const getUser = async ()=>{
 }
 
 
+computed(()=>{
+
+})
+
+
 onBeforeMount(()=>{
    getUser()
 })
@@ -28,9 +34,6 @@ onBeforeMount(()=>{
 
 <template>
   <div class="main-div">
-      <div>
-         <input type="text" v-model="search" />
-      </div>
       <div  v-for="user in userInfo" :key="user.id" class="card"> 
  
           <div > 
